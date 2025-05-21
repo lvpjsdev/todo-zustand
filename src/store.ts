@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type Todo = {
+export type Todo = {
   id: number;
   text: string;
   completed: boolean;
@@ -20,12 +20,14 @@ export const useTodosStore = create<TodosState>()((set, get) => ({
       todos: [
         ...get().todos,
         {
-          id: get().todos[get().todos.length - 1].id + 1,
+          id: (get().todos[get().todos.length - 1]?.id || 0) + 1,
           text,
           completed: false,
         },
       ],
     });
+
+    console.log(get().todos);
   },
   remove: (id: number) => {
     set({ todos: get().todos.filter((todo) => todo.id !== id) });

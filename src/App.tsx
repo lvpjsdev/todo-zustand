@@ -1,17 +1,18 @@
-import { Typography, Input, Checkbox, Flex, Radio, Button } from 'antd';
-import './App.css';
+import { Typography, Checkbox, Flex, Radio, Button } from 'antd';
+// import './App.css';
+import { TodoInput } from './components/TodoInput';
+import { useTodosStore } from './store';
+import { TodosList } from './components/TodosList/TodosList';
 
 function App() {
+  const addTodo = useTodosStore((state) => state.add);
+
   return (
     <>
       <Typography.Title>todos</Typography.Title>
       <div className='card'>
-        <Input placeholder='What needs to be done?' />
-        <div>
-          <Checkbox>Hello World</Checkbox>
-          <Checkbox>Hello World</Checkbox>
-          <Checkbox>Hello World</Checkbox>
-        </div>
+        <TodoInput onEnter={addTodo} />
+        <TodosList />
       </div>
       <footer>
         <span>counter lefts</span>
