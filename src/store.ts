@@ -1,10 +1,5 @@
 import { create } from 'zustand';
-
-export type Todo = {
-  id: number;
-  text: string;
-  completed: boolean;
-};
+import type { Todo } from './types';
 
 type TodosState = {
   todos: Todo[];

@@ -1,5 +1,6 @@
 import { Checkbox } from 'antd';
-import { useTodosStore, type Todo } from '../../store';
+import { useTodosStore } from '../../store';
+import type { Todo } from '../../types';
 
 interface TodoItemProps {
   todo: Todo;
