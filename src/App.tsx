@@ -21,15 +21,18 @@ function App() {
       <div>
         <Typography.Title>todos</Typography.Title>
         <Collapse
+          defaultActiveKey={1}
           items={[
             {
+              key: 1,
               label: <TodoInput onEnter={addTodo} />,
               children: <TodosList todos={todos} status={todoState} />,
             },
           ]}
+          collapsible='icon'
         />
       </div>
-      <footer>
+      <footer style={{ paddingTop: 8 }}>
         <Flex gap='small' justify='space-between'>
           <Typography.Text>
             {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
