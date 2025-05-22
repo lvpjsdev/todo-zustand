@@ -1,10 +1,5 @@
 import { Input } from 'antd';
-import {
-  useCallback,
-  useState,
-  type FC,
-  type KeyboardEventHandler,
-} from 'react';
+import { useCallback, type FC, type KeyboardEventHandler } from 'react';
 
 interface TodoInputProps {
   onEnter: (value: string) => void;
