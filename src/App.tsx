@@ -11,6 +11,9 @@ function App() {
   const [todoState, setTodoState] = useState<TodoState>('all');
   const addTodo = useTodosStore((state) => state.add);
   const todos = useTodosStore((state) => state.todos);
+  const unDoneCount = useTodosStore(
+    (state) => state.todos.filter((todo) => !todo.completed).length
+  );
 
   return (
     <>
@@ -20,7 +23,9 @@ function App() {
         <TodosList todos={todos} status={todoState} />
       </div>
       <footer>
-        <span>counter lefts</span>
+        <span>
+          {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
+        </span>
         <TodoStatusSelector value={todoState} onChange={setTodoState} />
         <Button type='primary'>Clear completed</Button>
       </footer>
