@@ -1,6 +1,7 @@
 import { useMemo, type FC } from 'react';
 import { TODO_STATE, type Todo, type TodoState } from '../../types';
 import { TodoItem } from './TodoItem';
+import { Flex } from 'antd';
 
 interface TodosListProps {
   todos: Todo[];
@@ -18,10 +19,10 @@ export const TodosList: FC<TodosListProps> = ({ todos, status }) => {
   }, [todos, status]);
 
   return (
-    <div>
+    <Flex vertical gap='small'>
       {showedTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
-    </div>
+    </Flex>
   );
 };
