@@ -1,5 +1,5 @@
-import { Typography, Flex, Radio, Button } from 'antd';
-// import './App.css';
+import { Typography, Flex, Collapse, Button } from 'antd';
+import './App.css';
 import { TodoInput } from './components/TodoInput';
 import { useTodosStore } from './store';
 import { TodosList } from './components/TodosList/TodosList';
@@ -19,10 +19,14 @@ function App() {
   return (
     <>
       <Typography.Title>todos</Typography.Title>
-      <div className='card'>
-        <TodoInput onEnter={addTodo} />
-        <TodosList todos={todos} status={todoState} />
-      </div>
+      <Collapse
+        items={[
+          {
+            label: <TodoInput onEnter={addTodo} />,
+            children: <TodosList todos={todos} status={todoState} />,
+          },
+        ]}
+      />
       <footer>
         <span>
           {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
