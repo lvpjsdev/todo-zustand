@@ -1,4 +1,4 @@
-import { Typography, Collapse, Button, Flex, Space } from 'antd';
+import { Typography, Collapse, Button, Flex } from 'antd';
 import './App.css';
 import { TodoInput } from './components/TodoInput';
 import { useTodosStore } from './store';
@@ -31,11 +31,11 @@ function App() {
       </div>
       <footer>
         <Flex gap='small' justify='space-between'>
-          <span>
+          <Typography.Text>
             {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
-          </span>
+          </Typography.Text>
           <TodoStatusSelector value={todoState} onChange={setTodoState} />
-          <Button type='primary' onClick={clearDone}>
+          <Button type='text' onClick={clearDone}>
             Clear completed
           </Button>
         </Flex>
