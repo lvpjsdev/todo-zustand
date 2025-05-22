@@ -6,6 +6,7 @@ type TodosState = {
   add: (text: string) => void;
   remove: (id: number) => void;
   toggle: (id: number) => void;
+  clearDone: () => void;
 };
 
 export const useTodosStore = create<TodosState>()((set, get) => ({
@@ -33,5 +34,8 @@ export const useTodosStore = create<TodosState>()((set, get) => ({
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       ),
     });
+  },
+  clearDone: () => {
+    set({ todos: get().todos.filter((todo) => !todo.completed) });
   },
 }));
