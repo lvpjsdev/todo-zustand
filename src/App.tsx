@@ -1,4 +1,4 @@
-import { Typography, Flex, Collapse, Button } from 'antd';
+import { Typography, Collapse, Button, Flex, Space } from 'antd';
 import './App.css';
 import { TodoInput } from './components/TodoInput';
 import { useTodosStore } from './store';
@@ -18,23 +18,27 @@ function App() {
 
   return (
     <>
-      <Typography.Title>todos</Typography.Title>
-      <Collapse
-        items={[
-          {
-            label: <TodoInput onEnter={addTodo} />,
-            children: <TodosList todos={todos} status={todoState} />,
-          },
-        ]}
-      />
+      <div>
+        <Typography.Title>todos</Typography.Title>
+        <Collapse
+          items={[
+            {
+              label: <TodoInput onEnter={addTodo} />,
+              children: <TodosList todos={todos} status={todoState} />,
+            },
+          ]}
+        />
+      </div>
       <footer>
-        <span>
-          {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
-        </span>
-        <TodoStatusSelector value={todoState} onChange={setTodoState} />
-        <Button type='primary' onClick={clearDone}>
-          Clear completed
-        </Button>
+        <Flex gap='small' justify='space-between'>
+          <span>
+            {unDoneCount} item{unDoneCount > 1 ? 's' : ''} left
+          </span>
+          <TodoStatusSelector value={todoState} onChange={setTodoState} />
+          <Button type='primary' onClick={clearDone}>
+            Clear completed
+          </Button>
+        </Flex>
       </footer>
     </>
   );

@@ -19,16 +19,15 @@ export const TodoStatusSelector: FC<TodoStatusSelectorProps> = ({
   );
 
   return (
-    <Radio.Group value={value} onChange={onChangeValue}>
-      {Object.keys(TODO_STATE).map((key) => (
-        <Radio
-          key={key}
-          value={TODO_STATE[key as TodoState]}
-          style={{ textTransform: 'capitalize' }}
-        >
-          {TODO_STATE[key as TodoState]}
-        </Radio>
-      ))}
-    </Radio.Group>
+    <Radio.Group
+      value={value}
+      options={Object.keys(TODO_STATE).map((key) => ({
+        label: TODO_STATE[key as TodoState],
+        value: TODO_STATE[key as TodoState],
+      }))}
+      optionType='button'
+      onChange={onChangeValue}
+      block
+    />
   );
 };
